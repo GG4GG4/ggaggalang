@@ -39,16 +39,178 @@ interpreter.execute(code)
 ### Hello World!
 
 ```python
-# H (ASCII 72)
-gga gga gga gga gga gga gga gga gga gga # 10
-gga gga gga gga gga gga gga gga gga gga # 20
-gga gga gga gga gga gga gga gga gga gga # 30
-gga gga gga gga gga gga gga gga gga gga # 40
-gga gga gga gga gga gga gga gga gga gga # 50
-gga gga gga gga gga gga gga gga gga gga # 60
-gga gga gga gga gga gga gga gga gga gga # 70
-gga gga # 72
-gguggaggugga
+   # H (72)
+    gga gga gga gga gga gga gga gga gga gga # 10
+    gga gga gga gga gga gga gga gga gga gga # 20
+    gga gga gga gga gga gga gga gga gga gga # 30
+    gga gga gga gga gga gga gga gga gga gga # 40
+    gga gga gga gga gga gga gga gga gga gga # 50
+    gga gga gga gga gga gga gga gga gga gga # 60
+    gga gga gga gga gga gga gga gga gga gga # 70
+    gga gga # 72
+    gguggaggugga
+
+    gugu # 다음 셀로 이동
+
+    # e (101)
+    gga gga gga gga gga gga gga gga gga gga # 10
+    gga gga gga gga gga gga gga gga gga gga # 20
+    gga gga gga gga gga gga gga gga gga gga # 30
+    gga gga gga gga gga gga gga gga gga gga # 40
+    gga gga gga gga gga gga gga gga gga gga # 50
+    gga gga gga gga gga gga gga gga gga gga # 60
+    gga gga gga gga gga gga gga gga gga gga # 70
+    gga gga gga gga gga gga gga gga gga gga # 80
+    gga gga gga gga gga gga gga gga gga gga # 90
+    gga gga gga gga gga gga gga gga gga gga # 100
+    gga # 101
+    gguggaggugga
+
+    gugu # 다음 셀로 이동
+
+    # l (108)
+    gga gga gga gga gga gga gga gga gga gga # 10
+    gga gga gga gga gga gga gga gga gga gga # 20
+    gga gga gga gga gga gga gga gga gga gga # 30
+    gga gga gga gga gga gga gga gga gga gga # 40
+    gga gga gga gga gga gga gga gga gga gga # 50
+    gga gga gga gga gga gga gga gga gga gga # 60
+    gga gga gga gga gga gga gga gga gga gga # 70
+    gga gga gga gga gga gga gga gga gga gga # 80
+    gga gga gga gga gga gga gga gga gga gga # 90
+    gga gga gga gga gga gga gga gga gga gga # 100
+    gga gga gga gga gga gga gga gga # 108
+    gguggaggugga
+
+    gugu # 다음 셀로 이동
+
+    # l (108)
+    gga gga gga gga gga gga gga gga gga gga # 10
+    gga gga gga gga gga gga gga gga gga gga # 20
+    gga gga gga gga gga gga gga gga gga gga # 30
+    gga gga gga gga gga gga gga gga gga gga # 40
+    gga gga gga gga gga gga gga gga gga gga # 50
+    gga gga gga gga gga gga gga gga gga gga # 60
+    gga gga gga gga gga gga gga gga gga gga # 70
+    gga gga gga gga gga gga gga gga gga gga # 80
+    gga gga gga gga gga gga gga gga gga gga # 90
+    gga gga gga gga gga gga gga gga gga gga # 100
+    gga gga gga gga gga gga gga gga # 108
+    gguggaggugga
+
+    gugu # 다음 셀로 이동
+
+    # o (111)
+    gga gga gga gga gga gga gga gga gga gga # 10
+    gga gga gga gga gga gga gga gga gga gga # 20
+    gga gga gga gga gga gga gga gga gga gga # 30
+    gga gga gga gga gga gga gga gga gga gga # 40
+    gga gga gga gga gga gga gga gga gga gga # 50
+    gga gga gga gga gga gga gga gga gga gga # 60
+    gga gga gga gga gga gga gga gga gga gga # 70
+    gga gga gga gga gga gga gga gga gga gga # 80
+    gga gga gga gga gga gga gga gga gga gga # 90
+    gga gga gga gga gga gga gga gga gga gga # 100
+    gga gga gga gga gga gga gga gga gga gga # 110
+    gga # 111
+    gguggaggugga
+
+    gugu # 다음 셀로 이동
+
+    # 공백 (32)
+    gga gga gga gga gga gga gga gga gga gga # 10
+    gga gga gga gga gga gga gga gga gga gga # 20
+    gga gga gga gga gga gga gga gga gga gga # 30
+    gga gga # 32
+    gguggaggugga
+
+    gugu # 다음 셀로 이동
+
+    # W (87)
+    gga gga gga gga gga gga gga gga gga gga # 10
+    gga gga gga gga gga gga gga gga gga gga # 20
+    gga gga gga gga gga gga gga gga gga gga # 30
+    gga gga gga gga gga gga gga gga gga gga # 40
+    gga gga gga gga gga gga gga gga gga gga # 50
+    gga gga gga gga gga gga gga gga gga gga # 60
+    gga gga gga gga gga gga gga gga gga gga # 70
+    gga gga gga gga gga gga gga gga gga gga # 80
+    gga gga gga gga gga gga gga # 87
+    gguggaggugga
+
+    gugu # 다음 셀로 이동
+
+    # o (111)
+    gga gga gga gga gga gga gga gga gga gga # 10
+    gga gga gga gga gga gga gga gga gga gga # 20
+    gga gga gga gga gga gga gga gga gga gga # 30
+    gga gga gga gga gga gga gga gga gga gga # 40
+    gga gga gga gga gga gga gga gga gga gga # 50
+    gga gga gga gga gga gga gga gga gga gga # 60
+    gga gga gga gga gga gga gga gga gga gga # 70
+    gga gga gga gga gga gga gga gga gga gga # 80
+    gga gga gga gga gga gga gga gga gga gga # 90
+    gga gga gga gga gga gga gga gga gga gga # 100
+    gga gga gga gga gga gga gga gga gga gga # 110
+    gga # 111
+    gguggaggugga
+
+    gugu # 다음 셀로 이동
+
+    # r (114)
+    gga gga gga gga gga gga gga gga gga gga # 10
+    gga gga gga gga gga gga gga gga gga gga # 20
+    gga gga gga gga gga gga gga gga gga gga # 30
+    gga gga gga gga gga gga gga gga gga gga # 40
+    gga gga gga gga gga gga gga gga gga gga # 50
+    gga gga gga gga gga gga gga gga gga gga # 60
+    gga gga gga gga gga gga gga gga gga gga # 70
+    gga gga gga gga gga gga gga gga gga gga # 80
+    gga gga gga gga gga gga gga gga gga gga # 90
+    gga gga gga gga gga gga gga gga gga gga # 100
+    gga gga gga gga gga gga gga gga gga gga # 110
+    gga gga gga gga # 114
+    gguggaggugga
+
+    gugu # 다음 셀로 이동
+
+    # l (108)
+    gga gga gga gga gga gga gga gga gga gga # 10
+    gga gga gga gga gga gga gga gga gga gga # 20
+    gga gga gga gga gga gga gga gga gga gga # 30
+    gga gga gga gga gga gga gga gga gga gga # 40
+    gga gga gga gga gga gga gga gga gga gga # 50
+    gga gga gga gga gga gga gga gga gga gga # 60
+    gga gga gga gga gga gga gga gga gga gga # 70
+    gga gga gga gga gga gga gga gga gga gga # 80
+    gga gga gga gga gga gga gga gga gga gga # 90
+    gga gga gga gga gga gga gga gga gga gga # 100
+    gga gga gga gga gga gga gga gga # 108
+    gguggaggugga
+
+    gugu # 다음 셀로 이동
+
+    # d (100)
+    gga gga gga gga gga gga gga gga gga gga # 10
+    gga gga gga gga gga gga gga gga gga gga # 20
+    gga gga gga gga gga gga gga gga gga gga # 30
+    gga gga gga gga gga gga gga gga gga gga # 40
+    gga gga gga gga gga gga gga gga gga gga # 50
+    gga gga gga gga gga gga gga gga gga gga # 60
+    gga gga gga gga gga gga gga gga gga gga # 70
+    gga gga gga gga gga gga gga gga gga gga # 80
+    gga gga gga gga gga gga gga gga gga gga # 90
+    gga gga gga gga gga gga gga gga gga gga # 100
+    gguggaggugga
+
+    gugu # 다음 셀로 이동
+
+    # ! (33)
+    gga gga gga gga gga gga gga gga gga gga # 10
+    gga gga gga gga gga gga gga gga gga gga # 20
+    gga gga gga gga gga gga gga gga gga gga # 30
+    gga gga gga # 33
+    gguggaggugga
 ```
 
 더 많은 예제는 `main.py`를 참조하세요.
