@@ -1,28 +1,7 @@
 from interpreter import GgaggalangInterpreter
 
-def main():
-    # 디버그 모드로 실행
-    print("=== Debug Mode ===")
-    interpreter_debug = GgaggalangInterpreter(debug=True)
-    test_code = """
-    # H (72)
-    gga gga gga gga gga gga gga gga gga gga # 10
-    gga gga gga gga gga gga gga gga gga gga # 20
-    gga gga gga gga gga gga gga gga gga gga # 30
-    gga gga gga gga gga gga gga gga gga gga # 40
-    gga gga gga gga gga gga gga gga gga gga # 50
-    gga gga gga gga gga gga gga gga gga gga # 60
-    gga gga gga gga gga gga gga gga gga gga # 70
-    gga gga # 72
-    gguggaggugga
-    """
-    interpreter_debug.execute(test_code)
-    print("\n")
-    
-    # 일반 모드로 실행
-    print("=== Normal Mode ===")
-    interpreter = GgaggalangInterpreter(debug=False)
-    hello_world = """
+def get_hello_world_code():
+    return """
     # H (72)
     gga gga gga gga gga gga gga gga gga gga # 10
     gga gga gga gga gga gga gga gga gga gga # 20
@@ -196,7 +175,19 @@ def main():
     gga gga gga # 33
     gguggaggugga
     """
-    interpreter.execute(hello_world)
+
+def main():
+    # 디버그 모드로 실행
+    print("=== Debug Mode ===")
+    interpreter_debug = GgaggalangInterpreter(debug=True)
+    interpreter_debug.execute(get_hello_world_code())
+    print("\n")
+    
+    # 일반 모드로 실행
+    print("=== Normal Mode ===")
+    interpreter = GgaggalangInterpreter(debug=False)
+    interpreter.execute(get_hello_world_code())
+    print()
 
 if __name__ == "__main__":
     main()
