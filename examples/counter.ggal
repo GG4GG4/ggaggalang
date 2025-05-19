@@ -1,0 +1,30 @@
+# 카운터 예제 (0-9까지 출력)
+# 루프 기능을 사용하여 숫자를 출력합니다
+
+# 셀 0에 10을 저장 (카운트다운 값)
+gga gga gga gga gga gga gga gga gga gga # 10
+
+# 셀 1로 이동하여 48 저장 (ASCII '0')
+gugu
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga gga # 48
+
+# 셀 0으로 돌아가기
+gugugga
+
+# 루프 시작 - 셀 0이 0이 될 때까지 반복
+galanglang
+  # 셀 1로 이동 (현재 ASCII 숫자)
+  gugu
+  # 현재 숫자 출력
+  gguggaggugga
+  # 셀 1 값 증가 (다음 ASCII 숫자)
+  gga
+  # 셀 0으로 돌아가기
+  gugugga
+  # 카운터 감소
+  kka
+langlaggug

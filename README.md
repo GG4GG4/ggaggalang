@@ -11,6 +11,9 @@ Brainfuck 기반의 한국형 프로그래밍 언어입니다.
 | `gugu` | > | 메모리 포인터를 오른쪽으로 이동 |
 | `gugugga` | < | 메모리 포인터를 왼쪽으로 이동 |
 | `gguggaggugga` | . | 현재 메모리 셀의 값을 ASCII 문자로 출력 |
+| `ggalgga` | , | 사용자 입력을 받아 현재 메모리 셀에 저장 |
+| `galanglang` | [ | 현재 메모리 셀의 값이 0이면 대응하는 `langlaggug`로 이동 |
+| `langlaggug` | ] | 현재 메모리 셀의 값이 0이 아니면 대응하는 `galanglang`으로 이동 |
 
 ## 사용법
 
