@@ -238,6 +238,8 @@ def parse_arguments(args: Optional[List[str]] = None) -> argparse.Namespace:
                       help='코드 최적화 활성화 (성능 향상)')
     parser.add_argument('-s', '--show-optimized', action='store_true',
                       help='최적화된 코드 표시 (--optimize와 함께 사용)')
+    parser.add_argument('--no-extensions', action='store_true',
+                      help='확장 기능 비활성화 (기본 Brainfuck 호환 모드)')
     
     return parser.parse_args(args)
 
@@ -273,7 +275,10 @@ def run_from_args(args: Optional[argparse.Namespace] = None) -> None:
         code = get_hello_world_code()
     
     # 인터프리터 실행
-    interpreter = GgaggalangInterpreter(debug=args.debug)
+    interpreter = GgaggalangInterpreter(
+        debug=args.debug,
+        extensions=not args.no_extensions
+    )
     
     # 코드 최적화 (선택 사항)
     if args.optimize:

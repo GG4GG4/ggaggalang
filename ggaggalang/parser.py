@@ -3,11 +3,12 @@ Ggaggalang 파서 모듈
 """
 from typing import List, Tuple, Dict, Optional
 from .errors import GgaggalangSyntaxError
+from .extensions import GgaggalangExtensions
 
 class GgaggalangParser:
     """Ggaggalang 코드를 파싱하는 클래스"""
     
-    # 명령어 정의
+    # 기본 명령어 정의
     COMMANDS = {
         'gga': '+',          # 현재 포인터가 가리키는 메모리 셀의 값을 1 증가
         'kka': '-',          # 현재 포인터가 가리키는 메모리 셀의 값을 1 감소
@@ -18,6 +19,9 @@ class GgaggalangParser:
         'galanglang': '[',   # 현재 메모리 셀의 값이 0이면 대응하는 `langlaggug`로 이동
         'langlaggug': ']',   # 현재 메모리 셀의 값이 0이 아니면 대응하는 `galanglang`으로 이동
     }
+    
+    # 확장 명령어 결합
+    COMMANDS.update(GgaggalangExtensions.EXTENDED_COMMANDS)
     
     def __init__(self, debug: bool = False):
         """
