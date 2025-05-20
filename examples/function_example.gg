@@ -1,0 +1,58 @@
+# 함수 정의와 호출 예제
+# 간단한 함수를 정의하고 호출하는 예제입니다
+
+# 셀 0에 65 저장 (함수 이름으로 사용)
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga gga gga gga # 50
+gga gga gga gga gga gga gga gga gga gga # 60
+gga gga gga gga gga # 65 (ASCII 'A' - 함수 이름)
+
+# 함수 정의 시작
+gangga # FUNC_DEF - 현재 셀 값(65)을 함수 이름으로 사용
+
+  # 함수 내부 코드: 'Hello' 출력
+  
+  # H (72)
+  gga gga gga gga gga gga gga gga gga gga # 10
+  gga gga gga gga gga gga gga gga gga gga # 20
+  gga gga gga gga gga gga gga gga gga gga # 30
+  gga gga gga gga gga gga gga gga gga gga # 40
+  gga gga gga gga gga gga gga gga gga gga # 50
+  gga gga gga gga gga gga gga gga gga gga # 60
+  gga gga gga gga gga gga gga gga gga gga # 70
+  gga gga # 72
+  gguggaggugga
+  
+  # e (101)
+  kka kka kka kka kka kka kka kka kka kka # -10
+  kka kka kka kka kka kka kka kka kka kka # -20
+  kka kka kka kka kka kka kka kka kka # -29
+  gguggaggugga
+  
+  # l (108)
+  gga gga gga gga gga gga gga # +7
+  gguggaggugga
+  
+  # l (108) - 값 유지
+  gguggaggugga
+  
+  # o (111)
+  gga gga gga # +3
+  gguggaggugga
+
+# 함수 정의 끝
+ggaggang # FUNC_END
+
+# 메인 코드
+# 셀 0에는 여전히 65(함수 이름)가 있음
+# 함수 호출
+gukku # FUNC_CALL - 현재 셀 값(65)의 함수 호출
+
+# 개행 출력
+gga gga gga gga gga gga gga gga gga gga # 10
+kka kka kka kka kka kka kka kka kka kka # -10
+# 값 10 (개행 문자)
+gguggaggugga

@@ -1,0 +1,86 @@
+# 수학 연산 예제
+# 확장 수학 연산자를 사용하는 예제입니다
+
+# 셀 0에 10 저장
+gga gga gga gga gga gga gga gga gga gga # 10
+
+# 셀 1에 5 저장
+gugu # 셀 1로 이동
+gga gga gga gga gga # 5
+
+# 셀 0으로 돌아가서 곱셈 수행 (10 * 5 = 50)
+gugugga # 셀 0으로 이동
+gaggug # MULTIPLY - 셀 0의 값(10)과 셀 1의 값(5)을 곱해서 셀 0에 저장
+
+# 결과 출력 (ASCII '2' = 50)
+gguggaggugga
+
+# 개행 문자 출력
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka # 셀 0에 10 저장 (개행 문자)
+gguggaggugga
+
+# 나눗셈 예제
+# 셀 0에 100 저장
+kka kka kka kka kka kka kka kka kka kka # 값을 0으로 만듦
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga gga gga gga # 50
+gga gga gga gga gga gga gga gga gga gga # 60
+gga gga gga gga gga gga gga gga gga gga # 70
+gga gga gga gga gga gga gga gga gga gga # 80
+gga gga gga gga gga gga gga gga gga gga # 90
+gga gga gga gga gga gga gga gga gga gga # 100
+
+# 셀 1에 4 저장
+gugu # 셀 1로 이동
+kka kka kka kka kka # 셀 1의 값을 0으로 만듦
+gga gga gga gga # 4
+
+# 셀 0으로 돌아가서 나눗셈 수행 (100 / 4 = 25)
+gugugga # 셀 0으로 이동
+guggug # DIVIDE - 셀 0의 값(100)을 셀 1의 값(4)으로 나눠서 셀 0에 저장
+
+# 결과 출력 (ASCII 문자 25)
+gguggaggugga
+
+# 개행 문자 출력
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka # 셀 0에 8(백스페이스) 저장
+gguggaggugga
+gga gga # 셀 0에 10(개행) 저장
+gguggaggugga
+
+# 나머지(모듈로) 예제
+# 셀 0에 17 저장
+kka kka kka kka kka kka kka kka kka kka # 값을 0으로 만듦
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga # 17
+
+# 셀 1에 5 저장
+gugu # 셀 1로 이동
+kka kka kka kka # 셀 1의 값을 0으로 만듦
+gga gga gga gga gga # 5
+
+# 셀 0으로 돌아가서 모듈로 연산 수행 (17 % 5 = 2)
+gugugga # 셀 0으로 이동
+kkakka # MOD - 셀 0의 값(17)을 셀 1의 값(5)으로 나눈 나머지를 셀 0에 저장
+
+# 결과 출력 (ASCII '2' = 50)
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga gga # 48
+gguggaggugga
+
+# 개행 문자 출력
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka # 셀 0에 10 저장 (개행 문자)
+gguggaggugga

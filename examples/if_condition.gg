@@ -1,0 +1,140 @@
+# 조건문 예제
+# if-else 구문을 사용하여 분기 처리하는 예제입니다
+
+# 셀 0에 1 저장 (조건이 참)
+gga # 값 1 저장
+
+# if 시작 - 현재 셀(0)이 0이 아니면 실행됨
+gagugug # IF_START
+
+  # '참' 출력
+  
+  # 참 (236)
+  gga gga gga gga gga gga gga gga gga gga # 10
+  gga gga gga gga gga gga gga gga gga gga # 20
+  gga gga gga gga gga gga gga gga gga gga # 30
+  gga gga gga gga gga gga gga gga gga gga # 40
+  gga gga gga gga gga gga gga gga gga gga # 50
+  gga gga gga gga gga gga gga gga gga gga # 60
+  gga gga gga gga gga gga gga gga gga gga # 70
+  gga gga gga gga gga gga gga gga gga gga # 80
+  gga gga gga gga gga gga gga gga gga gga # 90
+  gga gga gga gga gga gga gga gga gga gga # 100
+  gga gga gga gga gga gga gga gga gga gga # 110
+  gga gga gga gga gga gga gga gga gga gga # 120
+  gga gga gga gga gga gga gga gga gga gga # 130
+  gga gga gga gga gga gga gga gga gga gga # 140
+  gga gga gga gga gga gga gga gga gga gga # 150
+  gga gga gga gga gga gga gga gga gga gga # 160
+  gga gga gga gga gga gga gga gga gga gga # 170
+  gga gga gga gga gga gga gga gga gga gga # 180
+  gga gga gga gga gga gga gga gga gga gga # 190
+  gga gga gga gga gga gga gga gga gga gga # 200
+  gga gga gga gga gga gga gga gga gga gga # 210
+  gga gga gga gga gga gga gga gga gga gga # 220
+  gga gga gga gga gga gga gga gga gga gga # 230
+  gga gga gga gga gga gga # 236
+  gguggaggugga
+
+# else 시작
+gugalang # IF_ELSE
+
+  # '거짓' 출력 (이 블록은 실행되지 않음)
+  
+  # 거 (176)
+  gga gga gga gga gga gga gga gga gga gga # 10
+  gga gga gga gga gga gga gga gga gga gga # 20
+  gga gga gga gga gga gga gga gga gga gga # 30
+  gga gga gga gga gga gga gga gga gga gga # 40
+  gga gga gga gga gga gga gga gga gga gga # 50
+  gga gga gga gga gga gga gga gga gga gga # 60
+  gga gga gga gga gga gga gga gga gga gga # 70
+  gga gga gga gga gga gga gga gga gga gga # 80
+  gga gga gga gga gga gga gga gga gga gga # 90
+  gga gga gga gga gga gga gga gga gga gga # 100
+  gga gga gga gga gga gga gga gga gga gga # 110
+  gga gga gga gga gga gga gga gga gga gga # 120
+  gga gga gga gga gga gga gga gga gga gga # 130
+  gga gga gga gga gga gga gga gga gga gga # 140
+  gga gga gga gga gga gga gga gga gga gga # 150
+  gga gga gga gga gga gga gga gga gga gga # 160
+  gga gga gga gga gga gga gga gga gga gga # 170
+  gga gga gga gga gga gga # 176
+  gguggaggugga
+
+# if-else 종료
+galanggu # IF_END
+
+# 새로운 조건문 테스트 (거짓 조건)
+kka # 셀 0의 값을 0으로 만듦
+
+# if 시작 - 현재 셀(0)이 0이므로 else 블록으로 이동
+gagugug # IF_START
+
+  # '참' 출력 (이 블록은 실행되지 않음)
+  
+  # 참 (236)
+  gga gga gga gga gga gga gga gga gga gga # 10
+  gga gga gga gga gga gga gga gga gga gga # 20
+  gga gga gga gga gga gga gga gga gga gga # 30
+  gga gga gga gga gga gga gga gga gga gga # 40
+  gga gga gga gga gga gga gga gga gga gga # 50
+  gga gga gga gga gga gga gga gga gga gga # 60
+  gga gga gga gga gga gga gga gga gga gga # 70
+  gga gga gga gga gga gga gga gga gga gga # 80
+  gga gga gga gga gga gga gga gga gga gga # 90
+  gga gga gga gga gga gga gga gga gga gga # 100
+  gga gga gga gga gga gga gga gga gga gga # 110
+  gga gga gga gga gga gga gga gga gga gga # 120
+  gga gga gga gga gga gga gga gga gga gga # 130
+  gga gga gga gga gga gga gga gga gga gga # 140
+  gga gga gga gga gga gga gga gga gga gga # 150
+  gga gga gga gga gga gga gga gga gga gga # 160
+  gga gga gga gga gga gga gga gga gga gga # 170
+  gga gga gga gga gga gga gga gga gga gga # 180
+  gga gga gga gga gga gga gga gga gga gga # 190
+  gga gga gga gga gga gga gga gga gga gga # 200
+  gga gga gga gga gga gga gga gga gga gga # 210
+  gga gga gga gga gga gga gga gga gga gga # 220
+  gga gga gga gga gga gga gga gga gga gga # 230
+  gga gga gga gga gga gga # 236
+  gguggaggugga
+
+# else 시작
+gugalang # IF_ELSE
+
+  # '거짓' 출력 (이 블록이 실행됨)
+  
+  # 거 (176)
+  gga gga gga gga gga gga gga gga gga gga # 10
+  gga gga gga gga gga gga gga gga gga gga # 20
+  gga gga gga gga gga gga gga gga gga gga # 30
+  gga gga gga gga gga gga gga gga gga gga # 40
+  gga gga gga gga gga gga gga gga gga gga # 50
+  gga gga gga gga gga gga gga gga gga gga # 60
+  gga gga gga gga gga gga gga gga gga gga # 70
+  gga gga gga gga gga gga gga gga gga gga # 80
+  gga gga gga gga gga gga gga gga gga gga # 90
+  gga gga gga gga gga gga gga gga gga gga # 100
+  gga gga gga gga gga gga gga gga gga gga # 110
+  gga gga gga gga gga gga gga gga gga gga # 120
+  gga gga gga gga gga gga gga gga gga gga # 130
+  gga gga gga gga gga gga gga gga gga gga # 140
+  gga gga gga gga gga gga gga gga gga gga # 150
+  gga gga gga gga gga gga gga gga gga gga # 160
+  gga gga gga gga gga gga gga gga gga gga # 170
+  gga gga gga gga gga gga # 176
+  gguggaggugga
+  
+  # 짓 (215)
+  gga gga gga gga gga gga gga gga gga gga # 10
+  gga gga gga gga gga gga gga gga gga gga # 20
+  gga gga gga gga gga gga gga gga gga # 29
+  gguggaggugga
+
+# if-else 종료
+galanggu # IF_END
+
+# 개행 출력
+gga gga gga gga gga gga gga gga gga gga # 셀 0에 10 저장 (개행 문자)
+gguggaggugga
