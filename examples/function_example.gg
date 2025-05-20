@@ -16,20 +16,13 @@ gangga # FUNC_DEF - 현재 셀 값(65)을 함수 이름으로 사용
   # 함수 내부 코드: 'Hello' 출력
   
   # H (72)
-  gga gga gga gga gga gga gga gga gga gga # 10
-  gga gga gga gga gga gga gga gga gga gga # 20
-  gga gga gga gga gga gga gga gga gga gga # 30
-  gga gga gga gga gga gga gga gga gga gga # 40
-  gga gga gga gga gga gga gga gga gga gga # 50
-  gga gga gga gga gga gga gga gga gga gga # 60
-  gga gga gga gga gga gga gga gga gga gga # 70
-  gga gga # 72
+  gga gga gga gga gga gga gga # +7 = 72
   gguggaggugga
   
   # e (101)
-  kka kka kka kka kka kka kka kka kka kka # -10
-  kka kka kka kka kka kka kka kka kka kka # -20
-  kka kka kka kka kka kka kka kka kka # -29
+  gga gga gga gga gga gga gga gga gga gga # 10
+  gga gga gga gga gga gga gga gga gga gga # 20
+  gga gga gga gga gga gga gga gga gga # 29
   gguggaggugga
   
   # l (108)
