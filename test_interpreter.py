@@ -10,8 +10,8 @@ from ggaggalang.errors import GgaggalangSyntaxError
 
 class TestGgaggalangInterpreter(unittest.TestCase):
     def setUp(self):
-        # 각 테스트 전에 새로운 인터프리터 객체 생성
-        self.interpreter = GgaggalangInterpreter(debug=False)
+        # 각 테스트 전에 새로운 인터프리터 객체 생성 (확장 기능 비활성화)
+        self.interpreter = GgaggalangInterpreter(debug=False, extensions=False)
         
         # 표준 출력 리디렉션 설정
         self.held_output = io.StringIO()
@@ -154,9 +154,8 @@ class TestGgaggalangInterpreter(unittest.TestCase):
         
         # GgaggalangSyntaxError가 발생하는지 확인
         with self.assertRaises(GgaggalangSyntaxError):
-            self.interpreter.parser.check_bracket_matching(
-                self.interpreter.parser.clean_code(code)
-            )
+            # 직접 execute 메서드를 호출하여 예외 발생 테스트
+            self.interpreter.execute(code)
     
     def test_comments_and_whitespace(self):
         # 주석과 공백이 제대로 처리되는지 테스트

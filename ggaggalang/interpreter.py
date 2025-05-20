@@ -8,17 +8,19 @@ import array
 from .errors import GgaggalangSyntaxError, GgaggalangRuntimeError
 from .parser import GgaggalangParser
 from .visualizer import MemoryVisualizer
+from .extensions import GgaggalangExtensions
 
 class GgaggalangInterpreter:
     """Ggaggalang 인터프리터 클래스"""
     
-    def __init__(self, debug: bool = False, memory_size: int = 30000):
+    def __init__(self, debug: bool = False, memory_size: int = 30000, extensions: bool = True):
         """
         GgaggalangInterpreter 초기화
         
         Args:
             debug: 디버그 모드 활성화 여부
             memory_size: 메모리 셀 개수
+            extensions: 확장 기능 활성화 여부
         """
         # 배열 타입 사용으로 메모리 효율 개선
         self.memory = array.array('B', [0] * memory_size)  # 부호 없는 바이트 배열로 메모리 최적화
@@ -30,8 +32,14 @@ class GgaggalangInterpreter:
         self.commands = []
         self.parser = GgaggalangParser(debug=debug)
         
+        # 확장 기능 초기화
+        self.extensions_enabled = extensions
+        self.extensions = GgaggalangExtensions() if extensions else None
+        self.if_blocks = {}  # if 블록 정보 저장
+        
         # 명령어 처리 함수 매핑 (dispatcher) - 성능 개선
         self.command_handlers = {
+            # 기본 명령어
             'gga': self.increment,
             'kka': self.decrement,
             'gugu': self.move_right,
@@ -39,8 +47,33 @@ class GgaggalangInterpreter:
             'gguggaggugga': self.output_byte,
             'ggalgga': self.input_byte,
             'galanglang': self.loop_start,
-            'langlaggug': self.loop_end
+            'langlaggug': self.loop_end,
         }
+        
+        # 확장 명령어 추가
+        if extensions:
+            self.command_handlers.update({
+                # 함수 관련 명령어
+                'FUNC_DEF': self.func_def,
+                'FUNC_END': self.func_end,
+                'FUNC_CALL': self.func_call,
+                'FUNC_RET': self.func_ret,
+                
+                # 조건부 분기 명령어
+                'IF_START': self.if_start,
+                'IF_ELSE': self.if_else,
+                'IF_END': self.if_end,
+                
+                # 수학 연산 명령어
+                'MULTIPLY': self.multiply,
+                'DIVIDE': self.divide,
+                'MOD': self.modulo,
+                
+                # 메모리 조작 명령어
+                'COPY': self.copy,
+                'JUMP_TO': self.jump_to,
+                'SET': self.set_value,
+            })
         
     def increment(self) -> None:
         """gga: 현재 포인터가 가리키는 메모리 셀의 값을 1 증가"""
@@ -166,6 +199,202 @@ class GgaggalangInterpreter:
             return
         MemoryVisualizer.print_memory_state(self.memory, self.pointer)
 
+    # 확장 기능 명령어 구현
+    def func_def(self) -> None:
+        """함수 정의 시작"""
+        if not self.extensions_enabled:
+            return
+            
+        # 현재 셀 값을 함수 이름으로 사용
+        func_name = self.memory[self.pointer]
+        
+        # 함수 본체를 실행하지 않고 끝까지 건너뜀
+        func_def_index = self.current_command_index
+        nesting_level = 1
+        i = self.current_command_index + 1
+        
+        while i < len(self.commands) and nesting_level > 0:
+            if self.commands[i] == 'FUNC_DEF':
+                nesting_level += 1
+            elif self.commands[i] == 'FUNC_END':
+                nesting_level -= 1
+            i += 1
+            
+        # 함수 정의를 저장
+        if nesting_level == 0 and self.extensions:
+            end_index = i - 1
+            self.extensions.register_function(func_name, func_def_index + 1, end_index)
+            
+            if self.debug:
+                print(f"DEBUG: 함수 정의 - 이름: {func_name}, 시작: {func_def_index + 1}, 끝: {end_index}")
+                
+            # 함수 정의를 건너뛰고 계속 실행
+            self.current_command_index = end_index
+    
+    def func_end(self) -> None:
+        """함수 정의 끝"""
+        if not self.extensions_enabled:
+            return
+            
+        # 함수에서 호출된 경우 반환 위치로 이동
+        return_pos = self.extensions.pop_call_stack()
+        if return_pos is not None:
+            if self.debug:
+                print(f"DEBUG: 함수 종료 - 반환 위치: {return_pos}")
+            self.current_command_index = return_pos
+    
+    def func_call(self) -> None:
+        """함수 호출"""
+        if not self.extensions_enabled or not self.extensions:
+            return
+            
+        # 현재 셀 값을 함수 이름으로 사용
+        func_name = self.memory[self.pointer]
+        func_info = self.extensions.get_function(func_name)
+        
+        if func_info:
+            start_pos, end_pos = func_info
+            
+            if self.debug:
+                print(f"DEBUG: 함수 호출 - 이름: {func_name}, 위치: {start_pos}")
+                
+            # 반환 위치 저장
+            self.extensions.push_call_stack(self.current_command_index)
+            
+            # 함수 시작 위치로 이동
+            self.current_command_index = start_pos - 1  # 다음 단계에서 +1 되므로 -1
+        else:
+            if self.debug:
+                print(f"DEBUG: 함수를 찾을 수 없음 - 이름: {func_name}")
+    
+    def func_ret(self) -> None:
+        """함수에서 반환"""
+        if not self.extensions_enabled or not self.extensions:
+            return
+            
+        return_pos = self.extensions.pop_call_stack()
+        if return_pos is not None:
+            if self.debug:
+                print(f"DEBUG: 함수 반환 - 위치: {return_pos}")
+            self.current_command_index = return_pos
+    
+    def if_start(self) -> None:
+        """조건부 분기 시작"""
+        if not self.extensions_enabled:
+            return
+            
+        if self.memory[self.pointer] == 0:
+            # 조건이 거짓이면 해당 if 블록을 건너뜀
+            if self.current_command_index in self.if_blocks:
+                else_pos, end_pos = self.if_blocks[self.current_command_index]
+                if self.debug:
+                    print(f"DEBUG: 조건 거짓 - else/end로 이동: {else_pos}")
+                self.current_command_index = else_pos - 1  # 다음 단계에서 +1 되므로 -1
+        elif self.debug:
+            print(f"DEBUG: 조건 참 - if 블록 실행")
+    
+    def if_else(self) -> None:
+        """else 블록 시작"""
+        if not self.extensions_enabled:
+            return
+            
+        # 현재 if 블록의 end 위치로 이동
+        for if_start, (else_pos, end_pos) in self.if_blocks.items():
+            if else_pos == self.current_command_index:
+                if self.debug:
+                    print(f"DEBUG: else 블록 건너뛰기 - end로 이동: {end_pos}")
+                self.current_command_index = end_pos - 1  # 다음 단계에서 +1 되므로 -1
+                break
+    
+    def if_end(self) -> None:
+        """if/else 블록 종료"""
+        # 특별한 처리 필요 없음 - 정상적으로 다음 명령어로 진행
+        if self.debug and self.extensions_enabled:
+            print(f"DEBUG: if/else 블록 종료")
+    
+    def multiply(self) -> None:
+        """현재 셀과 다음 셀 값 곱하기"""
+        if not self.extensions_enabled:
+            return
+            
+        try:
+            if self.pointer + 1 < self.memory_size:
+                result = (self.memory[self.pointer] * self.memory[self.pointer + 1]) % 256
+                self.memory[self.pointer] = result
+                if self.debug:
+                    print(f"DEBUG: 곱셈 - 결과: {result}")
+        except Exception as e:
+            if self.debug:
+                print(f"DEBUG: 곱셈 오류 - {e}")
+    
+    def divide(self) -> None:
+        """현재 셀 값을 다음 셀 값으로 나누기"""
+        if not self.extensions_enabled:
+            return
+            
+        try:
+            if self.pointer + 1 < self.memory_size and self.memory[self.pointer + 1] != 0:
+                result = (self.memory[self.pointer] // self.memory[self.pointer + 1]) % 256
+                self.memory[self.pointer] = result
+                if self.debug:
+                    print(f"DEBUG: 나눗셈 - 결과: {result}")
+        except Exception as e:
+            if self.debug:
+                print(f"DEBUG: 나눗셈 오류 - {e}")
+    
+    def modulo(self) -> None:
+        """현재 셀 값을 다음 셀 값으로 나눈 나머지"""
+        if not self.extensions_enabled:
+            return
+            
+        try:
+            if self.pointer + 1 < self.memory_size and self.memory[self.pointer + 1] != 0:
+                result = (self.memory[self.pointer] % self.memory[self.pointer + 1]) % 256
+                self.memory[self.pointer] = result
+                if self.debug:
+                    print(f"DEBUG: 모듈로 - 결과: {result}")
+        except Exception as e:
+            if self.debug:
+                print(f"DEBUG: 모듈로 오류 - {e}")
+    
+    def copy(self) -> None:
+        """현재 셀 값을 다음 셀에 복사"""
+        if not self.extensions_enabled:
+            return
+            
+        try:
+            if self.pointer + 1 < self.memory_size:
+                self.memory[self.pointer + 1] = self.memory[self.pointer]
+                if self.debug:
+                    print(f"DEBUG: 복사 - 값: {self.memory[self.pointer]}")
+        except Exception as e:
+            if self.debug:
+                print(f"DEBUG: 복사 오류 - {e}")
+    
+    def jump_to(self) -> None:
+        """포인터를 현재 셀 값 위치로 이동"""
+        if not self.extensions_enabled:
+            return
+            
+        new_pos = self.memory[self.pointer] % self.memory_size
+        if self.debug:
+            print(f"DEBUG: 점프 - {self.pointer} -> {new_pos}")
+        self.pointer = new_pos
+    
+    def set_value(self) -> None:
+        """현재 셀 값을 다음 셀 값으로 설정"""
+        if not self.extensions_enabled:
+            return
+            
+        try:
+            if self.pointer + 1 < self.memory_size:
+                self.memory[self.pointer] = self.memory[self.pointer + 1]
+                if self.debug:
+                    print(f"DEBUG: 값 설정 - {self.memory[self.pointer]}")
+        except Exception as e:
+            if self.debug:
+                print(f"DEBUG: 값 설정 오류 - {e}")
+    
     def precompile_loops(self) -> Dict[int, int]:
         """
         루프 시작과 끝 위치 미리 계산 (성능 최적화)
@@ -223,6 +452,17 @@ class GgaggalangInterpreter:
             
             # 루프 위치 미리 계산 (최적화)
             loop_map = self.precompile_loops()
+            
+            # 확장 기능 초기화
+            if self.extensions_enabled and self.extensions:
+                # 함수 정의 미리 스캔
+                for i, cmd in enumerate(self.commands):
+                    if cmd == 'FUNC_DEF':
+                        # 함수 이름은 정의 시 결정됨 (런타임)
+                        pass
+                
+                # if 블록 미리 스캔
+                self.if_blocks = GgaggalangExtensions.scan_for_if_blocks(self.commands)
             
             # 명령어 실행
             self.current_command_index = 0
@@ -304,15 +544,21 @@ class GgaggalangInterpreter:
             print(f"문법 오류: {e}")
             if self.debug:
                 print(f"디버그 정보: 줄 {e.line}, 열 {e.column}")
+            # 테스트를 위해 예외를 다시 발생시킴
+            raise
                 
         except GgaggalangRuntimeError as e:
             print(f"실행 오류: {e}")
             if self.debug:
                 print(f"디버그 정보: 명령어 #{self.current_command_index+1} ({self.commands[self.current_command_index]})")
                 traceback.print_exc()
+            # 테스트를 위해 예외를 다시 발생시킴
+            raise
                 
         except Exception as e:
             print(f"오류 발생: {e}")
             if self.debug:
                 print(f"디버그 정보: 명령어 #{self.current_command_index+1} (알 수 없는 오류)")
                 traceback.print_exc()
+            # 테스트를 위해 예외를 다시 발생시킴
+            raise
