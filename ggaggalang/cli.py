@@ -6,6 +6,7 @@ import sys
 from typing import List, Optional, Dict, Any
 from .interpreter import GgaggalangInterpreter
 from .utils import string_to_ggaggalang, load_code_from_file
+from .optimizer import GgaggalangOptimizer
 
 def get_hello_world_code() -> str:
     """Hello World 예제 코드 반환"""
@@ -233,6 +234,10 @@ def parse_arguments(args: Optional[List[str]] = None) -> argparse.Namespace:
     parser.add_argument('-t', '--text', help='Ggaggalang 코드로 변환할 텍스트')
     parser.add_argument('-e', '--example', choices=['hello', 'loop'], 
                       help='실행할 예제 코드 (hello: Hello World, loop: 루프 예제)')
+    parser.add_argument('-o', '--optimize', action='store_true', 
+                      help='코드 최적화 활성화 (성능 향상)')
+    parser.add_argument('-s', '--show-optimized', action='store_true',
+                      help='최적화된 코드 표시 (--optimize와 함께 사용)')
     
     return parser.parse_args(args)
 
@@ -269,7 +274,26 @@ def run_from_args(args: Optional[argparse.Namespace] = None) -> None:
     
     # 인터프리터 실행
     interpreter = GgaggalangInterpreter(debug=args.debug)
-    interpreter.execute(code)
+    
+    # 코드 최적화 (선택 사항)
+    if args.optimize:
+        parsed_commands = interpreter.parser.clean_code(code)
+        optimized_commands = GgaggalangOptimizer.optimize(parsed_commands)
+        
+        if args.show_optimized:
+            print("=== 원본 명령어 ===")
+            print(" ".join(parsed_commands))
+            print("\n=== 최적화된 명령어 ===")
+            print(" ".join(optimized_commands))
+            print("\n=== 실행 결과 ===")
+        
+        # 최적화된 명령어로 재구성된 코드 생성 및 실행
+        optimized_code = " ".join(optimized_commands)
+        interpreter.execute(optimized_code, precompiled=True)
+    else:
+        # 일반 실행
+        interpreter.execute(code)
+        
     print()  # 줄바꿈 추가
 
 def main() -> None:

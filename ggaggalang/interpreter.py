@@ -1,8 +1,10 @@
 """
 Ggaggalang 인터프리터 모듈
+성능 개선을 위한 최적화 적용
 """
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Callable
 import traceback
+import array
 from .errors import GgaggalangSyntaxError, GgaggalangRuntimeError
 from .parser import GgaggalangParser
 from .visualizer import MemoryVisualizer
@@ -18,7 +20,8 @@ class GgaggalangInterpreter:
             debug: 디버그 모드 활성화 여부
             memory_size: 메모리 셀 개수
         """
-        self.memory = [0] * memory_size
+        # 배열 타입 사용으로 메모리 효율 개선
+        self.memory = array.array('B', [0] * memory_size)  # 부호 없는 바이트 배열로 메모리 최적화
         self.memory_size = memory_size
         self.pointer = 0
         self.debug = debug
@@ -26,6 +29,18 @@ class GgaggalangInterpreter:
         self.current_command_index = 0
         self.commands = []
         self.parser = GgaggalangParser(debug=debug)
+        
+        # 명령어 처리 함수 매핑 (dispatcher) - 성능 개선
+        self.command_handlers = {
+            'gga': self.increment,
+            'kka': self.decrement,
+            'gugu': self.move_right,
+            'gugugga': self.move_left,
+            'gguggaggugga': self.output_byte,
+            'ggalgga': self.input_byte,
+            'galanglang': self.loop_start,
+            'langlaggug': self.loop_end
+        }
         
     def increment(self) -> None:
         """gga: 현재 포인터가 가리키는 메모리 셀의 값을 1 증가"""
@@ -151,29 +166,63 @@ class GgaggalangInterpreter:
             return
         MemoryVisualizer.print_memory_state(self.memory, self.pointer)
 
-    def execute(self, code: str) -> None:
+    def precompile_loops(self) -> Dict[int, int]:
+        """
+        루프 시작과 끝 위치 미리 계산 (성능 최적화)
+        
+        Returns:
+            루프 시작/끝 위치 매핑 사전
+        """
+        loop_map = {}  # 시작 위치 -> 끝 위치, 끝 위치 -> 시작 위치 매핑
+        stack = []     # 열린 대괄호 위치 저장
+        
+        for i, cmd in enumerate(self.commands):
+            if cmd == 'galanglang':  # 루프 시작
+                stack.append(i)
+            elif cmd == 'langlaggug':  # 루프 끝
+                if not stack:  # 이미 파서에서 검증됨
+                    continue
+                
+                start_pos = stack.pop()
+                end_pos = i
+                
+                # 양방향 매핑
+                loop_map[start_pos] = end_pos
+                loop_map[end_pos] = start_pos
+                
+        return loop_map
+        
+    def execute(self, code: str, precompiled: bool = False) -> None:
         """
         Ggaggalang 코드 실행
         
         Args:
             code: 실행할 코드
+            precompiled: 사전 처리된 코드 여부 (True이면 파싱 단계 건너뜀)
         """
         try:
             # 초기화
             self.pointer = 0
-            self.memory = [0] * self.memory_size
+            self.memory = array.array('B', [0] * self.memory_size)
             self.loop_stack = []
             
-            # 코드 파싱
-            self.commands = self.parser.clean_code(code)
+            # 코드 파싱 (precompiled가 False인 경우에만)
+            if not precompiled:
+                self.commands = self.parser.clean_code(code)
+                
+                # 괄호 매칭 확인
+                brackets_match, error_pos, error_msg = self.parser.check_bracket_matching(self.commands)
+                if not brackets_match:
+                    if self.debug:
+                        cmd_with_error = self.commands[error_pos] if error_pos < len(self.commands) else "<end of code>"
+                        print(f"ERROR: {error_msg} at command {error_pos} ({cmd_with_error})")
+                    raise GgaggalangSyntaxError(f"{error_msg}", 0, 0)
+            else:
+                # 이미 처리된 코드 (최적화 직후 실행 등)
+                self.commands = code.split()
             
-            # 괄호 매칭 확인
-            brackets_match, error_pos, error_msg = self.parser.check_bracket_matching(self.commands)
-            if not brackets_match:
-                if self.debug:
-                    cmd_with_error = self.commands[error_pos] if error_pos < len(self.commands) else "<end of code>"
-                    print(f"ERROR: {error_msg} at command {error_pos} ({cmd_with_error})")
-                raise GgaggalangSyntaxError(f"{error_msg}", 0, 0)
+            # 루프 위치 미리 계산 (최적화)
+            loop_map = self.precompile_loops()
             
             # 명령어 실행
             self.current_command_index = 0
@@ -183,33 +232,68 @@ class GgaggalangInterpreter:
                 print("DEBUG: 실행 시작")
                 self.show_debug_memory_state()
                 
+            # 실행 루프 최적화
             while self.current_command_index < len(self.commands):
                 cmd = self.commands[self.current_command_index]
                 
                 if self.debug:
                     print(f"DEBUG: 실행 중: {cmd} (명령어 #{self.current_command_index+1})")
                 
-                if cmd == 'gguggaggugga':
-                    self.output_byte()
-                elif cmd == 'gugu':
-                    self.move_right()
-                elif cmd == 'gugugga':
-                    self.move_left()
-                elif cmd == 'gga':
-                    self.increment()
-                elif cmd == 'kka':
-                    self.decrement()
-                elif cmd == 'ggalgga':
-                    self.input_byte()
-                elif cmd == 'galanglang':
-                    self.loop_start()
-                elif cmd == 'langlaggug':
-                    self.loop_end()
-                    
+                # 명령어 dispatcher 패턴 사용 (if-else 체인보다 빠름)
+                # 최적화된 명령어 처리
+                if cmd.startswith("ADD "):
+                    # 최적화된 증가 명령어
+                    value = int(cmd.split()[1])
+                    self.memory[self.pointer] = (self.memory[self.pointer] + value) % 256
+                    if self.debug:
+                        print(f"DEBUG: Cell {self.pointer} 값 {value} 증가: {self.memory[self.pointer]}")
+                elif cmd.startswith("SUB "):
+                    # 최적화된 감소 명령어
+                    value = int(cmd.split()[1])
+                    self.memory[self.pointer] = (self.memory[self.pointer] - value) % 256
+                    if self.debug:
+                        print(f"DEBUG: Cell {self.pointer} 값 {value} 감소: {self.memory[self.pointer]}")
+                elif cmd.startswith("RIGHT "):
+                    # 최적화된 오른쪽 이동 명령어
+                    value = int(cmd.split()[1])
+                    self.pointer = (self.pointer + value) % self.memory_size
+                    if self.debug:
+                        print(f"DEBUG: 포인터 오른쪽으로 {value}칸 이동: {self.pointer}")
+                elif cmd.startswith("LEFT "):
+                    # 최적화된 왼쪽 이동 명령어
+                    value = int(cmd.split()[1])
+                    self.pointer = (self.pointer - value) % self.memory_size
+                    if self.debug:
+                        print(f"DEBUG: 포인터 왼쪽으로 {value}칸 이동: {self.pointer}")
+                elif cmd == "CLEAR":
+                    # 최적화된 셀 초기화 명령어
+                    self.memory[self.pointer] = 0
+                    if self.debug:
+                        print(f"DEBUG: Cell {self.pointer} 값 초기화: 0")
+                elif cmd in self.command_handlers:
+                    # 루프 명령어 최적화 처리
+                    if cmd == 'galanglang':  # 루프 시작
+                        if self.memory[self.pointer] == 0:
+                            # 값이 0이면 짝이 되는 닫는 괄호로 바로 점프
+                            self.current_command_index = loop_map[self.current_command_index]
+                        else:
+                            # 루프 스택 관리는 기존 메서드가 담당
+                            self.loop_start()
+                    elif cmd == 'langlaggug':  # 루프 끝
+                        if self.memory[self.pointer] != 0:
+                            # 값이 0이 아니면 짝이 되는 여는 괄호로 바로 점프
+                            self.current_command_index = loop_map[self.current_command_index]
+                        else:
+                            # 루프 스택 관리는 기존 메서드가 담당
+                            self.loop_end()
+                    else:
+                        # 일반 명령어 실행
+                        self.command_handlers[cmd]()
+                
                 if self.debug and (cmd == 'gga' or cmd == 'kka' or cmd == 'ggalgga'):
                     # 메모리 값이 변경되는 명령어 후에만 메모리 상태 표시
                     self.show_debug_memory_state()
-                    
+                
                 self.current_command_index += 1
                 
             if self.debug:

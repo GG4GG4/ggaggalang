@@ -50,6 +50,12 @@ python main.py -f examples/hello_world.ggal
 
 # 디버그 모드 활성화
 python main.py -f examples/hello_world.ggal -d
+
+# 최적화 모드로 실행 (성능 향상)
+python main.py -f examples/hello_world.ggal -o
+
+# 최적화된 명령어 확인
+python main.py -f examples/hello_world.ggal -o -s
 ```
 
 ### 명령줄 인터페이스 (CLI)
@@ -64,6 +70,8 @@ python main.py -h  # 도움말 표시
 # -d, --debug         디버그 모드 활성화
 # -t, --text TEXT     Ggaggalang 코드로 변환할 텍스트
 # -e, --example {hello,loop}  실행할 예제 코드
+# -o, --optimize      코드 최적화 활성화 (성능 향상)
+# -s, --show-optimized 최적화된 코드 표시
 ```
 
 ### 파이썬 API 사용
@@ -176,6 +184,37 @@ python main.py -t "Hello"
 ```
 
 이 명령은 "Hello" 문자열을 출력하는 Ggaggalang 코드를 생성합니다.
+
+### 코드 최적화
+
+대용량 코드나 성능이 중요한 경우 코드 최적화 기능을 사용하세요:
+
+```bash
+# 최적화 모드로 실행
+python main.py -f examples/hello_world.ggal -o
+
+# 최적화된 명령어 확인
+python main.py -f examples/hello_world.ggal -o -s
+```
+
+최적화는 다음과 같은 작업을 수행합니다:
+- 연속된 증감 명령어(gga/kka) 압축
+- 연속된 이동 명령어(gugu/gugugga) 압축
+- 셀 초기화 패턴 감지 및 최적화
+- 루프 접근 최적화
+
+### 성능 벤치마크
+
+```bash
+# 기본 벤치마크 실행
+python examples/benchmark.py
+
+# 최적화 적용 벤치마크
+python examples/benchmark.py --optimize
+
+# 다양한 옵션 적용
+python examples/benchmark.py --test move -n 10000
+```
 
 ### 자체 프로그램 작성 팁
 
