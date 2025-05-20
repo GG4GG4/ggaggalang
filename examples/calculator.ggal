@@ -1,0 +1,538 @@
+# Ggaggalang 확장 기능 예제
+# 간단한 계산기 구현
+
+# 인사말 출력
+# 'C' 문자 출력 (67)
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga # 67
+gguggaggugga
+
+# 'a' 문자 출력 (97)
+gugu
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga # 97
+gguggaggugga
+
+# 'l' 문자 출력 (108)
+gugu
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga # 108
+gguggaggugga
+
+# 'c' 문자 출력 (99)
+gugu
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga # 99
+gguggaggugga
+
+# 공백 출력 (32)
+gugu
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga # 32
+gguggaggugga
+
+# "=" 문자 출력 (61)
+gugu
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga # 61
+gguggaggugga
+
+# 줄바꿈 출력 (10)
+gugu
+gga gga gga gga gga gga gga gga gga gga # 10
+gguggaggugga
+
+# 정수 덧셈 함수 정의 (함수 ID: 1)
+gugu
+gga # 함수 ID 1 (덧셈)
+gangga # 함수 정의 시작
+
+  # 인자1: 셀 1에 저장
+  # 인자2: 셀 2에 저장
+  # 결과: 셀 0에 저장
+
+  # 셀 1의 값을 셀 0으로 복사
+  gugugga # 셀 1로 이동
+  galang  # 현재 셀 값을 다음 셀에 복사 (셀 2에 복사)
+  galang  # 현재 셀 값을 다음 셀에 복사 (셀 3에 복사)
+  
+  # 셀 2로 이동
+  gugugga # 셀 0으로 이동
+  gugu    # 셀 1로 이동
+  gugu    # 셀 2로 이동
+  
+  # 셀 1과 셀 2의 값을 더하여 셀 0에 저장
+  # 셀 0 = 셀 1 + 셀 2
+  gugugga # 셀 1로 이동
+  gugugga # 셀 0으로 이동
+  
+  # 합계를 저장할 셀 0을 초기화
+  galanglang
+    kka
+  langlaggug
+  
+  # 첫 번째 피연산자 만큼 증가
+  gugu # 셀 1로 이동
+  galanglang # 셀 1의 값만큼 반복
+    gugugga # 셀 0으로 이동
+    gga     # 증가
+    gugu    # 셀 1로 이동
+    kka     # 카운터 감소
+  langlaggug
+  
+  # 두 번째 피연산자 만큼 증가
+  gugu # 셀 2로 이동
+  galanglang # 셀 2의 값만큼 반복
+    gugugga # 셀 1로 이동
+    gugugga # 셀 0으로 이동
+    gga     # 증가
+    gugu    # 셀 1로 이동
+    gugu    # 셀 2로 이동 
+    kka     # 카운터 감소
+  langlaggug
+  
+  # 결과 반환 (셀 0에 저장됨)
+  gugugga # 셀 1로 이동
+  gugugga # 셀 0으로 이동
+  
+ggaggang # 함수 정의 끝
+
+# 정수 곱셈 함수 정의 (함수 ID: 2)
+gugu
+gga gga # 함수 ID 2 (곱셈)
+gangga # 함수 정의 시작
+
+  # 인자1: 셀 1에 저장
+  # 인자2: 셀 2에 저장
+  # 결과: 셀 0에 저장
+  
+  # 셀 0 초기화
+  galanglang
+    kka
+  langlaggug
+  
+  # 첫 번째 인자가 0이면 결과는 0
+  gugu # 셀 1로 이동
+  gagugug # if 문 시작 (셀 1이 0이 아니면 실행)
+  
+    # 두 번째 인자가 0이면 결과는 0
+    gugu # 셀 2로 이동
+    gagugug # if 문 시작 (셀 2가 0이 아니면 실행)
+    
+      # 곱셈 구현 (셀1 * 셀2 = 셀0)
+      gugugga # 셀 1로 이동
+      gugugga # 셀 0으로 이동
+      
+      # 첫 번째 인자만큼 반복
+      gugu # 셀 1로 이동
+      galanglang # 셀 1의 값만큼 반복
+      
+        # 두 번째 인자만큼 셀 0 증가
+        gugu # 셀 2로 이동
+        galanglang # 셀 2의 값만큼 반복
+          gugugga # 셀 1로 이동
+          gugugga # 셀 0으로 이동
+          gga     # 증가
+          gugu    # 셀 1로 이동
+          gugu    # 셀 2로 이동
+          kka     # 카운터 감소
+        langlaggug
+        
+        # 셀 2 복원
+        gugugga # 셀 1로 이동
+        gugu    # 셀 2로 이동
+        galang  # 현재 값을 다음 셀로 복사 (셀 3)
+        gugugga # 셀 2로 이동
+        galanglang
+          kka
+        langlaggug
+        gugu # 셀 3으로 이동
+        galanglang # 셀 3의 값만큼 반복
+          gugugga # 셀 2로 이동
+          gga
+          gugu # 셀 3으로 이동
+          kka
+        langlaggug
+        gugugga # 셀 2로 이동
+        
+        gugugga # 셀 1로 이동
+        kka     # 카운터 감소
+      langlaggug
+      
+    galanggu # if 문 종료
+    
+  galanggu # if 문 종료
+  
+  # 결과 반환 (셀 0에 저장됨)
+  gugugga # 셀 1로 이동
+  gugugga # 셀 0으로 이동
+  
+ggaggang # 함수 정의 끝
+
+# 메인 코드
+
+# 첫 번째 숫자 입력 (셀 1에 저장)
+gugu # 셀 1으로 이동
+ggalgga # 입력 받기 (ASCII 문자)
+
+# ASCII '0'(48) 빼기
+gugu # 셀 2로 이동
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga # 48
+gugugga # 셀 1로 이동
+
+# 입력값에서 48 빼기 (ASCII -> 숫자)
+galanglang # 입력값만큼 반복
+  gugu # 셀 2로 이동
+  kka # 카운터 감소
+  gugugga # 셀 1로 이동
+  kka # 셀 1 감소
+langlaggug
+gugu # 셀 2로 이동
+galanglang # 카운터가 남아있으면 반복
+  gugugga # 셀 1로 이동
+  gga # 보상 증가 (48에서 카운터 초과분)
+  gugu # 셀 2로 이동
+  kka
+langlaggug
+
+# 두 번째 숫자 입력 (셀 2에 저장)
+gugugga # 셀 1로 이동
+gugu # 셀 2로 이동
+ggalgga # 입력 받기 (ASCII 문자)
+
+# ASCII '0'(48) 빼기
+gugu # 셀 3으로 이동
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga # 48
+gugugga # 셀 2로 이동
+
+# 입력값에서 48 빼기 (ASCII -> 숫자)
+galanglang # 입력값만큼 반복
+  gugu # 셀 3로 이동
+  kka # 카운터 감소
+  gugugga # 셀 2로 이동
+  kka # 셀 2 감소
+langlaggug
+gugu # 셀 3로 이동
+galanglang # 카운터가 남아있으면 반복
+  gugugga # 셀 2로 이동
+  gga # 보상 증가 (48에서 카운터 초과분)
+  gugu # 셀 3로 이동
+  kka
+langlaggug
+
+# 연산자 입력 (셀 3에 저장)
+gugugga # 셀 2로 이동
+gugu # 셀 3으로 이동
+ggalgga # 입력 받기
+
+# 연산자에 따라 다른 계산 수행
+# '+' 일 경우 (43) 덧셈 함수 호출
+# '*' 일 경우 (42) 곱셈 함수 호출
+# 그 외의 경우 에러 메시지 출력
+
+# '+' 연산자인지 확인 (43)
+gugugga # 셀 2로 이동
+gugugga # 셀 1로 이동
+gugugga # 셀 0으로 이동
+
+gga # 셀 0에 1 저장 (덧셈 함수 ID)
+gugu gugu gugu # 셀 3으로 이동
+
+# '+' 문자 확인을 위해 복사 및 비교
+gugu # 셀 4로 이동
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga # 43 ('+' 문자)
+
+# 셀 3(입력된 연산자)과 셀 4('+' 문자) 비교
+gugugga # 셀 3으로 이동
+
+# 비교를 위해 입력값과 '+' 문자의 차이 계산
+galanglang # 입력값만큼 반복
+  gugu # 셀 4로 이동 
+  kka # 셀 4 감소
+  gugugga # 셀 3으로 이동
+  kka # 셀 3 감소
+langlaggug
+
+# '+' 문자이면 셀 3이 0이 됨 -> 덧셈 함수 호출
+gagugug # if (셀 3 != 0), 덧셈 아님
+  # 덧셈이 아님, '*' 문자 확인 (42)
+  
+  # 셀 3, 4 초기화
+  galanglang
+    kka
+  langlaggug
+  gugu # 셀 4로 이동
+  galanglang
+    kka
+  langlaggug
+  
+  # '*' 문자 (42) 저장
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga # 42 ('*' 문자)
+  
+  # 셀 0에 2 저장 (곱셈 함수 ID)
+  gugugga gugugga gugugga # 셀 0으로 이동
+  gga gga # 셀 0 = 2 (곱셈 함수 ID)
+  
+  # 셀 3(입력된 연산자)와 셀 4('*' 문자) 비교
+  gugu gugu gugu # 셀 3으로 이동
+  
+  # 입력값 복원
+  ggalgga # 재입력
+  
+  # 비교를 위해 입력값과 '*' 문자의 차이 계산
+  galanglang # 입력값만큼 반복
+    gugu # 셀 4로 이동
+    kka # 셀 4 감소
+    gugugga # 셀 3으로 이동
+    kka # 셀 3 감소
+  langlaggug
+  
+  # '*' 문자가 아니면 에러 메시지 출력
+  gagugug # if (셀 3 != 0) -> '*'가 아님
+    # 에러 메시지 출력
+    gugugga gugugga gugugga # 셀 0으로 이동
+    
+    # "Error" 출력
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga # 69 ('E')
+    gguggaggugga
+    
+    gugu
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga # 114 ('r')
+    gguggaggugga
+    
+    gugu
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga # 114 ('r')
+    gguggaggugga
+    
+    gugu
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga # 111 ('o')
+    gguggaggugga
+    
+    gugu
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga gga gga gga gga gga gga
+    gga gga gga gga # 114 ('r')
+    gguggaggugga
+    
+    kkuggu # 함수 종료
+  galanggu # endif
+  
+  # 곱셈 함수 호출
+  gugugga gugugga gugugga # 셀 0으로 이동
+  gukku # 함수 호출
+gugalang # else
+  # 덧셈 함수 호출
+  gukku # 함수 호출
+galanggu # endif
+
+# ASCII로 변환하여 결과 출력
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga gga gga
+gga gga gga gga gga gga gga gga # 48 ('0')
+
+# 셀 0의 값이 10 미만이면 한 자리 숫자로 출력
+gagugug # if (셀 0 >= 10)
+  # 셀 0 >= 10 일 때
+  # 10의 자리와 1의 자리 분리
+  
+  # 10으로 나누기
+  gugu # 셀 1로 이동
+  gga gga gga gga gga gga gga gga gga gga # 10
+  
+  # 나눗셈 구현
+  galanglang # 셀 0이 0이 될 때까지 반복
+    gugugga # 셀 0으로 이동
+    
+    # 셀 0에서 10 빼기
+    galanglang
+      gugu # 셀 1로 이동
+      kka # 카운터 감소
+      gugugga # 셀 0으로 이동
+      kka # 셀 0 감소
+    langlaggug
+    
+    # 카운터가 0이 되었는지 확인
+    gugu # 셀 1로 이동
+    
+    gagugug # if 카운터 != 0 (빼기 완료)
+      gugu # 셀 2로 이동
+      gga # 몫 증가
+      gugugga # 셀 1로 이동
+      
+      # 카운터 복원
+      gga gga gga gga gga gga gga gga gga gga # 10 복원
+      
+      gugugga # 셀 0으로 이동
+    gugalang # else
+      # 빼기가 불가능 (나머지 발생)
+      # 나머지 계산 
+      gugu # 셀 1로 이동
+      galanglang
+        kka
+      langlaggug
+      
+      # 셀 0 복원 (나머지)
+      gugugga # 셀 0으로 이동
+      galanglang
+        kka
+      langlaggug
+      gugu # 셀 1로 이동
+      galanglang # 카운터만큼 반복
+        gugugga # 셀 0으로 이동
+        gga # 증가
+        gugu # 셀 1로 이동
+        kka # 카운터 감소
+      langlaggug
+      
+      gugugga # 셀 0으로 이동
+      # 반복 종료
+      kka # 카운터 0으로 만들어 루프 종료
+    galanggu # endif
+  langlaggug
+  
+  # 셀 2에 10의 자리 숫자가 있음
+  gugu gugu # 셀 2로 이동
+  
+  # ASCII로 변환 ('0' = 48)
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga # 48 추가
+  
+  # 10의 자리 숫자 출력
+  gguggaggugga
+  
+  # 셀 0으로 이동 (1의 자리 숫자)
+  gugugga gugugga # 셀 0으로 이동
+  
+  # ASCII로 변환 ('0' = 48)
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga # 48 추가
+  
+  # 1의 자리 숫자 출력
+  gguggaggugga
+  
+gugalang # else
+  # 셀 0 < 10 일 때 (한 자리 숫자)
+  # ASCII로 변환 ('0' = 48)
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga gga gga
+  gga gga gga gga gga gga gga gga # 48 추가
+  
+  # 숫자 출력
+  gguggaggugga
+galanggu # endif
+
+# 줄바꿈 출력
+gugu
+gga gga gga gga gga gga gga gga gga gga # 10
+gguggaggugga
