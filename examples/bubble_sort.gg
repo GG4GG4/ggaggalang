@@ -1,0 +1,397 @@
+# 버블 정렬 알고리즘 구현 예제
+# 배열: [5, 3, 8, 1, 2]를 오름차순으로 정렬
+
+# 메모리 사용 계획:
+# 셀 0: 임시 변수
+# 셀 1-5: 정렬할 배열 [5, 3, 8, 1, 2]
+# 셀 6: 외부 루프 카운터
+# 셀 7: 내부 루프 카운터
+# 셀 8: 배열 크기 (5)
+
+# 셀 1-5에 초기 배열 값 설정
+gugu # 셀 1
+gga gga gga gga gga # 5
+gugu # 셀 2
+gga gga gga # 3
+gugu # 셀 3
+gga gga gga gga gga gga gga gga # 8
+gugu # 셀 4
+gga # 1
+gugu # 셀 5
+gga gga # 2
+
+# 셀 8에 배열 크기 설정
+gugu gugu gugu # 셀 8
+gga gga gga gga gga # 5
+
+# 첫 번째 셀로 돌아가기
+gugugga gugugga gugugga gugugga gugugga gugugga gugugga gugugga
+
+# 원본 배열 출력
+# "[5, 3, 8, 1, 2] -> "
+# 괄호 시작 '['
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga gga gga gga # 50
+gga gga gga gga gga gga gga gga gga gga # 60
+gga gga gga gga gga gga gga gga gga gga # 70
+gga gga gga gga gga gga gga gga gga # 79
+gguggaggugga
+
+# 원본 배열 요소 출력
+gugu # 셀 1
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga # 43
+gguggaggugga
+
+# 쉼표와 공백
+gga gga gga gga gga # +5 = 48 (콤마 ',')
+gguggaggugga
+gga gga gga gga gga gga gga gga gga gga # +10 = 58 (공백)
+gguggaggugga
+
+# 셀 2 내용 출력
+gugu # 셀 2
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga # 42
+gguggaggugga
+
+# 쉼표와 공백
+gga gga gga gga gga gga # +6 = 48 (콤마 ',')
+gguggaggugga
+gga gga gga gga gga gga gga gga gga gga # +10 = 58 (공백)
+gguggaggugga
+
+# 셀 3 내용 출력
+gugu # 셀 3
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga # 47
+gguggaggugga
+
+# 쉼표와 공백
+gga # +1 = 48 (콤마 ',')
+gguggaggugga
+gga gga gga gga gga gga gga gga gga gga # +10 = 58 (공백)
+gguggaggugga
+
+# 셀 4 내용 출력
+gugu # 셀 4
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga # 47
+gguggaggugga
+
+# 쉼표와 공백
+gga # +1 = 48 (콤마 ',')
+gguggaggugga
+gga gga gga gga gga gga gga gga gga gga # +10 = 58 (공백)
+gguggaggugga
+
+# 셀 5 내용 출력
+gugu # 셀 5
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga # 46
+gguggaggugga
+
+# 괄호 끝 ']'과 화살표 '->'
+gga gga # +2 = 48 (']')
+gguggaggugga
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga # +45 = 93
+gguggaggugga
+
+gga gga gga gga # +4 = 97
+gguggaggugga
+
+gga gga gga gga gga # +5 = 102
+gguggaggugga
+
+# 공백
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka # 값을 0으로 초기화
+
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga # 32
+gguggaggugga
+
+# 셀 6에 외부 루프 카운터 설정 (배열 크기 - 1)
+gugugga gugugga gugugga gugugga gugugga gugugga # 셀 0으로 이동
+gugu gugu gugu gugu gugu gugu # 셀 6으로 이동
+gga gga gga gga # 4 (배열 크기 - 1)
+
+# 외부 루프 시작 (for i = 0; i < n-1; i++)
+galanglang # 외부 루프 시작
+  # 셀 7에 내부 루프 카운터 설정 (배열 크기 - 1 - i)
+  gugu # 셀 7
+  
+  # 셀 6의 값을 복사해서 셀 7에 넣기
+  gugugga # 셀 6
+  
+  # 복사 루프
+  galanglang # 루프 시작
+    kka # 셀 6 값 감소
+    gugu # 셀 7
+    gga # 셀 7 값 증가
+    gugugga # 셀 6
+  langlaggug # 루프 종료
+  
+  # 여기서 셀 6은 원래 값 유지, 셀 7에 복사됨
+  # 셀 8에서 배열 크기 가져와서 셀 7에 설정
+  gugu gugu # 셀 8
+  
+  # 배열 크기(5)에서 외부 루프 카운터(i) 빼기
+  # 셀 8 값을 셀 7에 추가
+  galanglang # 루프 시작
+    kka # 셀 8 값 감소
+    gugugga # 셀 7
+    gga # 셀 7 값 증가
+    gugu # 셀 8
+  langlaggug # 루프 종료
+
+  # 셀 7 = 배열 크기 + i
+  # 이제 셀 7에서 1을 빼서 내부 루프 카운터를 (배열 크기 - 1 - i)로 설정
+  gugugga # 셀 7
+  kka # -1
+  
+  # 내부 루프 시작 (for j = 0; j < n-i-1; j++)
+  galanglang # 내부 루프 시작
+    # 인접한 요소 비교 및 교환
+    # 비교: arr[j] > arr[j+1]이면 교환
+    
+    # 현재 위치(j+1)를 셀 0에 저장
+    gugugga gugugga gugugga gugugga gugugga gugugga gugugga # 셀 0
+    gga # j+1 = 1 (시작 위치)
+    
+    # 현재 위치의 값 가져오기 (arr[j])
+    gugu # j+1 번째 셀로 이동
+    
+    # 현재 값을 셀 0에 복사
+    galanglang # 루프 시작
+      kka # 현재 셀 값 감소
+      gugugga # 셀 0
+      gga # 셀 0 값 증가
+      gugu # 현재 셀로 이동
+    langlaggug # 루프 종료
+    
+    # 다음 위치의 값 가져오기 (arr[j+1])
+    gugu # j+2 번째 셀로 이동
+    
+    # 비교: 현재 값이 다음 값보다 큰지 (arr[j] > arr[j+1])
+    # 셀 0(arr[j])와 현재 셀(arr[j+1]) 비교
+    
+    # 비교 룰: 
+    # 1. 셀 0에서 현재 셀 값만큼 뺌
+    # 2. 결과가 양수이면 arr[j] > arr[j+1]
+    
+    # 복사 루프로 비교
+    gugugga # 셀 0으로 이동
+    
+    # 임시 변수 (셀 0)에 현재 위치(j+1) 값이 저장되어 있음
+    # 다음 위치(j+2) 값을 빼보기
+    
+    # 현재 셀(셀 0)에서 다음 셀(j+2) 값만큼 빼기
+    gugu gugu # j+2 번째 셀로 이동
+    
+    galanglang # 루프 시작
+      kka # 다음 셀 값 감소
+      gugugga gugugga # 셀 0으로 이동
+      kka # 셀 0 값 감소
+      gugu gugu # 다음 셀로 이동
+    langlaggug # 루프 종료
+    
+    # 비교 결과가 셀 0에 있음
+    # 셀 0 값이 0보다 크면 교환 필요
+    gugugga gugugga # 셀 0으로 이동
+    
+    # 교환 조건: 셀 0 값이 0보다 큰 경우 (arr[j] > arr[j+1])
+    gagugug # IF_START (셀 0 값이 0이 아니면 실행)
+      # 교환 로직: arr[j]와 arr[j+1] 교환
+      # 현재 j+1 위치를 셀 0에서 가져옴
+      gga # 셀 0에 1 저장 (j+1)
+      
+      # 해당 위치로 이동
+      gugu # j+1 번째 셀로 이동
+      
+      # 현재 위치 값 저장 (임시)
+      # 다음 위치 값을 현재 위치에 저장
+      # 임시 값을 다음 위치에 저장
+      
+      # 임시 저장소 (셀 0)에 현재 값 저장
+      gugugga # 셀 0으로 이동
+      kka # 셀 0 값을 0으로 만듦 (이전 값 제거)
+      
+      gugu # j+1 번째 셀로 이동
+      
+      # 현재 값을 셀 0에 복사
+      galanglang # 루프 시작
+        kka # 현재 셀 값 감소
+        gugugga # 셀 0
+        gga # 셀 0 값 증가
+        gugu # 현재 셀로 이동
+      langlaggug # 루프 종료
+      
+      # 현재 셀(j+1)은 0이 됨
+      # 다음 셀(j+2)의 값을 현재 셀에 복사
+      gugu # j+2 번째 셀로 이동
+      
+      # 다음 셀 값을 임시 저장소(셀 0)로 복사하기 전에
+      # 다음 셀(j+2) 값을 현재 셀(j+1)로 복사
+      galanglang # 루프 시작
+        kka # 다음 셀 값 감소
+        gugugga # 현재 셀(j+1)
+        gga # 현재 셀 값 증가
+        gugu # 다음 셀로 이동
+      langlaggug # 루프 종료
+      
+      # 다음 셀(j+2)은 0이 됨
+      # 임시 저장한 값(셀 0)을 다음 셀에 복사
+      gugugga gugugga # 셀 0으로 이동
+      
+      # 셀 0 값을 다음 셀(j+2)에 복사
+      galanglang # 루프 시작
+        kka # 셀 0 값 감소
+        gugu gugu # 다음 셀(j+2)로 이동
+        gga # 다음 셀 값 증가
+        gugugga gugugga # 셀 0으로 이동
+      langlaggug # 루프 종료
+    galanggu # IF_END
+    
+    # 내부 루프 반복을 위해 셀 7로 이동
+    gugu gugu gugu gugu gugu gugu gugu # 셀 7로 이동
+    kka # 카운터 감소
+    
+  langlaggug # 내부 루프 종료
+  
+  # 외부 루프 반복을 위해 셀 6으로 이동
+  gugugga # 셀 6
+  kka # 카운터 감소
+  
+langlaggug # 외부 루프 종료
+
+# 정렬된 배열 출력
+# 셀 0으로 이동
+gugugga gugugga gugugga gugugga gugugga gugugga # 셀 0으로 이동
+
+# 괄호 시작 '['
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga gga gga gga # 50
+gga gga gga gga gga gga gga gga gga gga # 60
+gga gga gga gga gga gga gga gga gga gga # 70
+gga gga gga gga gga gga gga gga gga # 79
+gguggaggugga
+
+# 정렬된 배열 요소 출력
+gugu # 셀 1
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga gga gga # 49
+gguggaggugga
+
+# 쉼표와 공백
+kka # -1 = 48 (콤마 ',')
+gguggaggugga
+gga gga gga gga gga gga gga gga gga gga # +10 = 58 (공백)
+gguggaggugga
+
+# 셀 2 내용 출력
+gugu # 셀 2
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga gga gga gga # 50
+gguggaggugga
+
+# 쉼표와 공백
+kka kka # -2 = 48 (콤마 ',')
+gguggaggugga
+gga gga gga gga gga gga gga gga gga gga # +10 = 58 (공백)
+gguggaggugga
+
+# 셀 3 내용 출력
+gugu # 셀 3
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga gga gga gga # 50
+gga gga # +2 = 52
+gguggaggugga
+
+# 쉼표와 공백
+kka kka kka kka # -4 = 48 (콤마 ',')
+gguggaggugga
+gga gga gga gga gga gga gga gga gga gga # +10 = 58 (공백)
+gguggaggugga
+
+# 셀 4 내용 출력
+gugu # 셀 4
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga gga gga gga # 50
+gga gga gga # +3 = 56
+gguggaggugga
+
+# 쉼표와 공백
+kka kka kka kka kka kka kka kka # -8 = 48 (콤마 ',')
+gguggaggugga
+gga gga gga gga gga gga gga gga gga gga # +10 = 58 (공백)
+gguggaggugga
+
+# 셀 5 내용 출력
+gugu # 셀 5
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga gga gga gga gga # 50
+gga gga gga gga gga gga # +6 = 64
+gguggaggugga
+
+# 괄호 끝 ']'
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka # -16 = 48 (']')
+gguggaggugga
+
+# 개행 출력
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka kka kka
+kka kka kka kka kka kka kka kka # -38 = 10 (개행 문자)
+gguggaggugga

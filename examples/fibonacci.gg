@@ -1,0 +1,159 @@
+# 피보나치 수열 계산 및 출력 예제
+# 이 코드는 처음 10개의 피보나치 수열을 계산하고 출력합니다.
+
+# 피보나치 수열: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
+
+# 셀 0: 카운터 (반복 횟수)
+# 셀 1: 첫 번째 값 (F_n-2)
+# 셀 2: 두 번째 값 (F_n-1)
+# 셀 3: 임시 저장소
+
+# 셀 0에 10 저장 (출력할 피보나치 수 개수)
+gga gga gga gga gga gga gga gga gga gga # 10
+
+# 셀 1로 이동해서 1 저장 (첫 번째 피보나치 수)
+gugu
+gga # 1
+
+# 셀 2로 이동해서 1 저장 (두 번째 피보나치 수)
+gugu
+gga # 1
+
+# 셀 0으로 돌아가서 피보나치 수열 계산 시작
+gugugga gugugga
+
+# 첫 번째 피보나치 수 출력 (1)
+gugu # 셀 1로 이동
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga # 46
+gguggaggugga # '1' 출력
+
+# 콤마와 공백 출력
+gga gga # +2 = 48 (콤마 ',')
+gguggaggugga
+gga gga gga gga gga gga gga gga gga gga # +10 = 58
+gguggaggugga # ' ' 출력
+
+# 두 번째 피보나치 수 출력 (1)
+gugu # 셀 2로 이동
+gga gga gga gga gga gga gga gga gga gga # 10
+gga gga gga gga gga gga gga gga gga gga # 20
+gga gga gga gga gga gga gga gga gga gga # 30
+gga gga gga gga gga gga gga gga gga gga # 40
+gga gga gga gga gga gga # 46
+gguggaggugga # '1' 출력
+
+# 쉼표와 공백 출력
+gga gga # +2 = 48 (콤마 ',')
+gguggaggugga
+gga gga gga gga gga gga gga gga gga gga # +10 = 58
+gguggaggugga # ' ' 출력
+
+# 셀 0으로 돌아가서 카운터 설정
+gugugga gugugga
+kka kka # 8 (이미 2개 출력했으므로 8번 더 출력)
+
+# 메인 루프 시작
+galanglang
+  # 피보나치 수열의 다음 수 계산
+  # F_n = F_n-1 + F_n-2
+  
+  # 셀 1의 값(F_n-2)을 셀 3에 복사
+  gugu # 셀 1로 이동
+  
+  # 셀 1 값을 셀 3으로 복사
+  galang # 복사 명령 (셀 1 -> 셀 2)
+  
+  # 셀 2로 이동
+  gugu # 셀 2로 이동
+  
+  # 셀 2 값을 셀 1로
+  gugugga # 셀 1로 이동
+  kka kka kka kka kka kka kka kka kka kka
+  kka kka kka kka kka kka kka kka kka kka
+  kka kka kka kka kka kka kka kka kka kka
+  kka kka kka kka kka kka kka kka kka kka
+  kka kka kka kka kka kka # 셀 1 값을 0으로 초기화
+  
+  gugu gugu # 셀 3으로 이동
+  
+  # 셀 3 값을 셀 1에 복사
+  gugugga gugugga # 셀 1로 이동
+  
+  # 셀 3의 값을 셀 1로 복사
+  gugu gugu # 셀 3으로 이동
+  
+  # 복사 루프 (셀 3 -> 셀 1)
+  galanglang
+    kka # 셀 3 값 감소
+    gugugga gugugga # 셀 1로 이동
+    gga # 셀 1 값 증가
+    gugu gugu # 셀 3으로 돌아가기
+  langlaggug
+  
+  # 셀 1과 셀 2의 값을 더해서 셀 3에 저장
+  gugugga gugugga # 셀 1로 이동
+  
+  # 셀 1 값을 셀 3에 복사
+  galanglang
+    kka # 셀 1 값 감소
+    gugu gugu # 셀 3으로 이동
+    gga # 셀 3 값 증가
+    gugugga gugugga # 셀 1로 돌아가기
+  langlaggug
+  
+  gugu # 셀 2로 이동
+  
+  # 셀 2 값을 셀 3에 추가
+  galanglang
+    kka # 셀 2 값 감소
+    gugu # 셀 3으로 이동
+    gga # 셀 3 값 증가
+    gugugga # 셀 2로 돌아가기
+  langlaggug
+  
+  # 셀 3의 현재 값이 다음 피보나치 수
+  gugu # 셀 3으로 이동
+  
+  # 숫자를 ASCII로 변환하여 출력
+  # 1자리 숫자는 48을 더하고, 2자리 숫자는 분리해서 각각 48을 더함
+  
+  # 10보다 큰지 확인 (2자리 이상)
+  # 셀 4에 10을 저장하여 비교
+  gugu # 셀 4로 이동
+  gga gga gga gga gga gga gga gga gga gga # 10
+  
+  # 셀 3으로 돌아가서 비교
+  gugugga
+  
+  # 현재 값을 그대로 사용해서 출력하기 위해 다른 방식으로 접근
+  # ASCII 코드 '0'(48)에 숫자를 더해서 출력
+  
+  # 현재 값(셀 3)에 48 더하기 = ASCII 숫자로 변환
+  gga gga gga gga gga gga gga gga gga gga # 10
+  gga gga gga gga gga gga gga gga gga gga # 20
+  gga gga gga gga gga gga gga gga gga gga # 30
+  gga gga gga gga gga gga gga gga gga gga # 40
+  gga gga gga gga gga gga gga gga # 48
+  
+  # 변환된 ASCII 숫자 출력
+  gguggaggugga
+  
+  # 쉼표와 공백 출력
+  gga # 셀 3 = 49 (,)
+  gguggaggugga # 쉼표 출력
+  gga gga gga gga gga gga gga gga gga # 셀 3 = 58 (공백)
+  gguggaggugga # 공백 출력
+  
+  # 셀 0으로 돌아가서 카운터 감소
+  gugugga gugugga gugugga
+  kka
+  
+langlaggug # 메인 루프 종료
+
+# 개행 출력
+gga gga gga gga gga gga gga gga gga gga # 10
+gguggaggugga
